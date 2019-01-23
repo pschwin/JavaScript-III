@@ -18,14 +18,16 @@
 
 //New Binding//
 
-function GameObject(dimensions){
-  this.createdAt = dimensions.createdAt;
-  this.dimensions = dimensions;
+function GameObject(options){
+  this.createdAt = options.createdAt;
+  this.dimensions = options.dimensions;
 }
 
 GameObject.prototype.destroy = function(){
-  return(`Object was removed from game`);
+  return(`${this.name} was removed from game`);
 }
+
+
 
 
 /*
@@ -44,9 +46,10 @@ function CharacterStats(stats){
   this.name = stats.name;
 }
 
+CharacterStats.prototype = Object.create(GameObject.prototype);
 CharacterStats.prototype.takeDamage = function(){
-  return (`${this.name} + took damage.`)
-}
+  return `${this.name} took damage.`;
+};
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -59,15 +62,16 @@ CharacterStats.prototype.takeDamage = function(){
 */
 
 function Humanoid(about){
-  //GameObject.call(this, stats);
   CharacterStats.call(this, about);
   this.team = about.team;
   this.weapons = about.weapons;
   this.language = about.language;
 }
 
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
 Humanoid.prototype.greet = function(){
-  return (`${this.name} + offers a greeting in ${this.language}`);
+  return (`${this.name}  offers a greeting in ${this.language}`);
 }
  
 /*
