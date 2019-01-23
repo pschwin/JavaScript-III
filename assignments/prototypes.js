@@ -19,7 +19,7 @@
 //New Binding//
 
 function GameObject(dimensions){
-  this.createdAt = createdAt;
+  this.createdAt = dimensions.createdAt;
   this.dimensions = dimensions;
 }
 
@@ -27,11 +27,6 @@ GameObject.prototype.destroy = function(){
   return(`Object was removed from game`);
 }
 
-
-
-///////////Testing/////////////////////////
-//const characterSize1 = new GameObject(2);
-//characterSize1.destroy();
 
 /*
   === CharacterStats ===
@@ -45,8 +40,8 @@ GameObject.prototype.destroy = function(){
 
 function CharacterStats(stats){
   GameObject.call(this, stats);
-  this.healthPoints = healthPoints;
-  this.name = name;
+  this.healthPoints = stats.healthPoints;
+  this.name = stats.name;
 }
 
 CharacterStats.prototype.takeDamage = function(){
@@ -64,11 +59,11 @@ CharacterStats.prototype.takeDamage = function(){
 */
 
 function Humanoid(about){
-  GameObject.call(this, stats);
+  //GameObject.call(this, stats);
   CharacterStats.call(this, about);
-  this.team = team;
-  this.weapons = weapons;
-  this.language = language;
+  this.team = about.team;
+  this.weapons = about.weapons;
+  this.language = about.language;
 }
 
 Humanoid.prototype.greet = function(){
@@ -83,7 +78,7 @@ Humanoid.prototype.greet = function(){
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -144,7 +139,7 @@ Humanoid.prototype.greet = function(){
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
