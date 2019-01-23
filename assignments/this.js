@@ -31,11 +31,15 @@ const objExample = {
         console.log(this);
     }
 };
-objExample.funfacts(5)
+objExample.funfacts(Math.random())
 
 // Principle 3
 
 // code example for New Binding
+
+
+
+
 
 function Cartoon(character){
     this.greeting = 'What up ';
