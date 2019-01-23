@@ -16,14 +16,18 @@
 */
 
 
+//New Binding//
+
 function GameObject(dimensions){
-  this.destroyMessage = ' Object was removed from the game';
+  this.createdAt = createdAt;
   this.dimensions = dimensions;
-  this.destroy = function(){
-    //console.log(this)
-    return (this.destroyMessage);
-  };
 }
+
+GameObject.prototype.destroy = function(){
+  return(`Object was removed from game`);
+}
+
+
 
 ///////////Testing/////////////////////////
 //const characterSize1 = new GameObject(2);
@@ -37,9 +41,17 @@ function GameObject(dimensions){
   * should inherit destroy() from GameObject's prototype
 */
 
+//Explicit Binding
 
+function CharacterStats(stats){
+  GameObject.call(this, stats);
+  this.healthPoints = healthPoints;
+  this.name = name;
+}
 
-
+CharacterStats.prototype.takeDamage = function(){
+  return (`${this.name} + took damage.`)
+}
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
